@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_admin/db/brand.dart';
 import 'package:ecommerce_app_admin/db/category.dart';
+import 'package:ecommerce_app_admin/screens/addproduct.dart';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 
@@ -170,7 +171,9 @@ class _AdminState extends State<Admin> {
               ListTile(
                 leading:Icon(Icons.add),
                 title: Text('Add Product'),
-                onTap:(){},
+                onTap:(){
+                  Navigator.of(context).push(MaterialPageRoute(builder:(ctx)=>AddProduct()));
+                },
               ),
               Divider(),
               ListTile(
@@ -238,7 +241,7 @@ class _AdminState extends State<Admin> {
               FormState _formState=_categoryFormkey.currentState;
 
               if (_formState.validate()) {
-                _categoryServices.createProduct(categoryController.text);
+                _categoryServices.createCategory(categoryController.text);
               Navigator.of(context).pop();
               Toast.show("Category added Succesfully", context,duration: Toast.LENGTH_LONG);
               categoryController.clear();
